@@ -3,7 +3,7 @@ public class DB {
     private Connection con = null;
     private Statement st = null;
     private ResultSet rs = null;
-    private String url = null;
+    private String url = "jdbc:mysql://localhost:3306/schorlarshipproject";
     private String username = "";
     private String password = "";
     

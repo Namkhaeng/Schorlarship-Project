@@ -48,7 +48,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         txtPass.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
 
-        btnRegis.setFont(new java.awt.Font("TH Sarabun New", 0, 18)); // NOI18N
+        btnRegis.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
         btnRegis.setText("สมัคร");
         btnRegis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +56,7 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
 
-        btnLogin.setFont(new java.awt.Font("TH Sarabun New", 0, 18)); // NOI18N
+        btnLogin.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
         btnLogin.setText("เข้าสู่ระบบ");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +88,7 @@ public class LoginPage extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+                .addContainerGap(78, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtUserID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
