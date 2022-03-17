@@ -48,59 +48,69 @@ public class RegisterPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel1.setText("ชื่อ");
 
-        jLabel2.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel2.setText("รหัสนักศึกษา");
 
-        jLabel3.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel3.setText("คณะ");
 
-        jLabel4.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel4.setText("สาขา");
 
-        jLabel5.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel5.setText("ชั้นปี");
 
-        jLabel6.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel6.setText("นามสกุล");
 
-        txtName.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtName.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
 
-        txtLastname.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtLastname.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
 
-        txtID.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtID.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel7.setText("รหัสผ่าน");
 
-        jTextField7.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jTextField7.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel8.setText("ยืนยันรหัสผ่าน");
 
-        jTextField8.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jTextField8.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
 
-        cbxDepart.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        cbxDepart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxDepart.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        cbxDepart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DIT" }));
+        cbxDepart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxDepartActionPerformed(evt);
+            }
+        });
 
-        cbxMajor.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        cbxMajor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxMajor.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        cbxMajor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CS", "CMG", "INT", " " }));
 
-        cbxGrade.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        cbxGrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxGrade.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        cbxGrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
 
-        btnOk.setFont(new java.awt.Font("TH Sarabun New", 0, 18)); // NOI18N
+        btnOk.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         btnOk.setText("ตกลง");
 
-        btnCancel.setFont(new java.awt.Font("TH Sarabun New", 0, 18)); // NOI18N
+        btnCancel.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         btnCancel.setText("ยกเลิก");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
-        jLabel9.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel9.setText("เบอร์ติดต่อ");
 
-        txtTel.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtTel.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,7 +126,11 @@ public class RegisterPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -131,28 +145,22 @@ public class RegisterPage extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cbxGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(89, 89, 89))
+                                        .addGap(18, 18, 18))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cbxDepart, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(75, 75, 75)))
+                                        .addGap(29, 29, 29)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbxGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbxDepart, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxMajor, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 111, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(txtLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                            .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxMajor, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(btnCancel)
@@ -193,7 +201,7 @@ public class RegisterPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOk)
                     .addComponent(btnCancel))
@@ -203,6 +211,16 @@ public class RegisterPage extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbxDepartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxDepartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxDepartActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        LoginPage lp = new LoginPage();
+        lp.setVisible(true);
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
