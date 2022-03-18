@@ -117,13 +117,16 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         DB db = new DB();
         try {
-            String id = txtUserID.getText();
-            String pass = txtPass.getText();
-            String sql = String.format("select id from user where id='%s' and pass='%s'",id,pass);
+            String user_id = txtUserID.getText();
+            String user_pass = txtPass.getText();
+            String sql = String.format("select * from users where user_id='%s' and user_pass='%s'",user_id,user_pass);
+            JOptionPane.showMessageDialog(null, sql);
             ResultSet rs = db.getResultSet(sql);
-            rs.next();
-            User user = new User();
-            user.setVisible(true);
+            if (rs.next()) {
+                User user = new User();
+                user.setVisible(true);
+            }
+            else throw new Exception();
         }
         catch(Exception e) {
             JOptionPane.showMessageDialog(null, "Wrong ID or Password");

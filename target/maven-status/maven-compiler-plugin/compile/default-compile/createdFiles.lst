@@ -1,8 +1,10 @@
 DB.class
+RegisterPage$4.class
 User$1.class
 LoginPage$3.class
 AdminHour.class
 AdCheckHour.class
+RegisterPage$3.class
 User.class
 RegisterPage$1.class
 LoginPage.class
@@ -14,3 +16,4 @@ LoginPage$2.class
 RegisterPage.class
 UserHour.class
 AdCheckHour$1.class
+RegisterPage$2.class

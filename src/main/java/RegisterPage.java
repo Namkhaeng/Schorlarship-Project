@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import javax.swing.*;
 /**
  *
  * @author niebz
@@ -35,12 +35,12 @@ public class RegisterPage extends javax.swing.JFrame {
         txtLastname = new javax.swing.JTextField();
         txtID = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtPass = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtConPass = new javax.swing.JTextField();
         cbxDepart = new javax.swing.JComboBox<>();
         cbxMajor = new javax.swing.JComboBox<>();
-        cbxGrade = new javax.swing.JComboBox<>();
+        cbxYear = new javax.swing.JComboBox<>();
         btnOk = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -75,12 +75,12 @@ public class RegisterPage extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel7.setText("รหัสผ่าน");
 
-        jTextField7.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        txtPass.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel8.setText("ยืนยันรหัสผ่าน");
 
-        jTextField8.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        txtConPass.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
 
         cbxDepart.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         cbxDepart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DIT" }));
@@ -93,11 +93,16 @@ public class RegisterPage extends javax.swing.JFrame {
         cbxMajor.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         cbxMajor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CS", "CMG", "INT", " " }));
 
-        cbxGrade.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
-        cbxGrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
+        cbxYear.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        cbxYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
 
         btnOk.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         btnOk.setText("ตกลง");
+        btnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkActionPerformed(evt);
+            }
+        });
 
         btnCancel.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         btnCancel.setText("ยกเลิก");
@@ -139,8 +144,8 @@ public class RegisterPage extends javax.swing.JFrame {
                                     .addComponent(jLabel8))
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                                    .addComponent(jTextField7)))
+                                    .addComponent(txtConPass, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                                    .addComponent(txtPass)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -150,7 +155,7 @@ public class RegisterPage extends javax.swing.JFrame {
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(29, 29, 29)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbxGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbxDepart, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,16 +195,16 @@ public class RegisterPage extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(cbxGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtConPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -220,7 +225,38 @@ public class RegisterPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         LoginPage lp = new LoginPage();
         lp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+        // TODO add your handling code here:
+        String user_name = txtName.getText();
+        String user_lastname = txtLastname.getText();
+        String user_id = txtID.getText();
+        String user_depart = cbxDepart.getSelectedItem().toString();
+        String user_major = cbxMajor.getSelectedItem().toString();
+        String user_year = cbxYear.getSelectedItem().toString();
+        String user_tel = txtTel.getText();
+        String user_pass = txtPass.getText();
+        String conpass = txtConPass.getText();
+        
+        String sql = String.format("Insert into users values('%s','%s','%s','%s','%s','%s','%s','%s','user')", user_name,user_lastname,
+                user_id,user_depart,user_major,user_year,user_tel,user_pass);
+    
+        DB temp = new DB();
+        try {
+            if(temp.execute(sql)) {
+                JOptionPane.showMessageDialog(null, "Register Success!");
+                LoginPage lp = new LoginPage();
+                lp.setVisible(true);
+                this.dispose();
+            }
+            else JOptionPane.showMessageDialog(null, "Register Fail!");
+        }
+        catch(Exception e) {
+            
+        }
+    }//GEN-LAST:event_btnOkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,8 +297,8 @@ public class RegisterPage extends javax.swing.JFrame {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnOk;
     private javax.swing.JComboBox<String> cbxDepart;
-    private javax.swing.JComboBox<String> cbxGrade;
     private javax.swing.JComboBox<String> cbxMajor;
+    private javax.swing.JComboBox<String> cbxYear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -272,11 +308,11 @@ public class RegisterPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField txtConPass;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtLastname;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPass;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 }

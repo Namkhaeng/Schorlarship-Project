@@ -1,10 +1,11 @@
 import java.sql.*;
+import javax.swing.JOptionPane;
 public class DB {
     private Connection con = null;
     private Statement st = null;
     private ResultSet rs = null;
     private String url = "jdbc:mysql://localhost:3306/schorlarshipproject";
-    private String username = "";
+    private String username = "root";
     private String password = "";
     
     public void connectDB()throws SQLException {
@@ -30,12 +31,14 @@ public class DB {
             connectDB();
             st = con.createStatement();
             st.execute(SQL);
+            DisconnectDB();
             return true;
         }
         catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
             return false;
         }
-        finally{DisconnectDB();}
+        
     }
     
     public ResultSet getResultSet(String SQL)throws SQLException {
