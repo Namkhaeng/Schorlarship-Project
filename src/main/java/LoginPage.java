@@ -39,10 +39,10 @@ public class LoginPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        jLabel1.setText("User ID");
+        jLabel1.setText("รหัสนักศึกษา");
 
         jLabel2.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        jLabel2.setText("Password");
+        jLabel2.setText("รหัสผ่าน");
 
         txtUserID.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
 
@@ -69,10 +69,13 @@ public class LoginPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel1)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtPass)
@@ -119,12 +122,19 @@ public class LoginPage extends javax.swing.JFrame {
         try {
             String user_id = txtUserID.getText();
             String user_pass = txtPass.getText();
-            String sql = String.format("select * from users where user_id='%s' and user_pass='%s'",user_id,user_pass);
-            JOptionPane.showMessageDialog(null, sql);
-            ResultSet rs = db.getResultSet(sql);
+            String sql = String.format("select permission from users where user_id='%s' and user_pass='%s'",user_id,user_pass); //ดึงข้อมูล ID , Password มาจาก users
+            //JOptionPane.showMessageDialog(null, sql);
+            ResultSet rs = db.getResultSet(sql); //ตัวเก็บข้อมูลที่ได้จากการเลือกบน Database
             if (rs.next()) {
-                User user = new User();
-                user.setVisible(true);
+                if (rs.getString(1).equals("user")) {
+                    UserCheckHour user = new UserCheckHour(get_current_id()); //โยนชื่อ Method เข้าไป
+                    this.setVisible(false); //ซ่อนหน้าต่าง ข้อมูลไม่หาย
+                    user.setVisible(true);
+                }else {
+                    AdCheckHour admin01 = new AdCheckHour(get_current_id()); //ดึงไอดีที่ใส่เข้ามา
+                    this.setVisible(false);
+                    admin01.setVisible(true);
+                }
             }
             else throw new Exception();
         }
@@ -133,6 +143,9 @@ public class LoginPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    public static String get_current_id() {
+        return txtUserID.getText(); //ดึง ID ที่เราจะใช้ โดยใช้ static
+    }
     /**
      * @param args the command line arguments
      */
@@ -175,6 +188,6 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JPasswordField txtPass;
-    private javax.swing.JTextField txtUserID;
+    private static javax.swing.JTextField txtUserID;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,19 +26,24 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel2" min="-2" pref="79" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtID" min="-2" pref="164" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtName" min="-2" pref="194" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtLastname" min="-2" pref="210" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel2" min="-2" pref="79" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txtID" min="-2" pref="164" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel1" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtName" min="-2" pref="194" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txtLastname" min="-2" pref="210" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -55,34 +60,30 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jLabel5" min="-2" pref="37" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel3" min="-2" pref="37" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="cbxYear" min="-2" pref="52" max="-2" attributes="0"/>
-                                  <Component id="cbxDepart" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <Component id="cbxDepart" min="-2" pref="195" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel4" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" min="-2" pref="68" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel4" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="jLabel9" min="-2" pref="68" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtTel" min="-2" pref="172" max="-2" attributes="0"/>
                           <Component id="cbxMajor" min="-2" pref="124" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
@@ -122,17 +123,17 @@
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtTel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPass" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtConPass" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="33" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnOk" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -249,7 +250,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="DIT"/>
+            <StringItem index="0" value="&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe25;&#xe31;&#xe22;&#xe19;&#xe27;&#xe31;&#xe15;&#xe01;&#xe23;&#xe23;&#xe21;&#xe14;&#xe34;&#xe08;&#xe34;&#xe17;&#xe31;&#xe25;&#xe40;&#xe17;&#xe04;&#xe42;&#xe19;&#xe42;&#xe25;&#xe22;&#xe35;"/>
           </StringArray>
         </Property>
       </Properties>
@@ -266,11 +267,12 @@
           <Font name="TH SarabunPSK" size="20" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="CS"/>
-            <StringItem index="1" value="CMG"/>
-            <StringItem index="2" value="INT"/>
-            <StringItem index="3" value=" "/>
+          <StringArray count="5">
+            <StringItem index="0" value="&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe01;&#xe32;&#xe23;&#xe04;&#xe2d;&#xe21;&#xe1e;&#xe34;&#xe27;&#xe40;&#xe15;&#xe2d;&#xe23;&#xe4c;"/>
+            <StringItem index="1" value="&#xe2a;&#xe32;&#xe23;&#xe2a;&#xe19;&#xe40;&#xe17;&#xe28;&#xe01;&#xe32;&#xe23;&#xe25;&#xe07;&#xe17;&#xe38;&#xe19;"/>
+            <StringItem index="2" value="&#xe04;&#xe2d;&#xe21;&#xe1e;&#xe34;&#xe27;&#xe40;&#xe15;&#xe2d;&#xe23;&#xe4c; &#xe40;&#xe01;&#xe21;&#xe2a;&#xe4c;&#xe41;&#xe25;&#xe30;&#xe2d;&#xe35;&#xe2a;&#xe1b;&#xe2d;&#xe23;&#xe4c;&#xe15;"/>
+            <StringItem index="3" value="&#xe19;&#xe27;&#xe31;&#xe15;&#xe01;&#xe23;&#xe23;&#xe21;&#xe14;&#xe34;&#xe08;&#xe34;&#xe17;&#xe31;&#xe25;"/>
+            <StringItem index="4" value="&#xe40;&#xe17;&#xe04;&#xe42;&#xe19;&#xe42;&#xe25;&#xe22;&#xe35;&#xe2a;&#xe37;&#xe48;&#xe2d;&#xe2a;&#xe32;&#xe23;&#xe2a;&#xe31;&#xe07;&#xe04;&#xe21;"/>
           </StringArray>
         </Property>
       </Properties>

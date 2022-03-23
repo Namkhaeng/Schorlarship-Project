@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import javax.swing.*;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author niebz
@@ -15,7 +17,14 @@ public class AdCheckHour extends javax.swing.JFrame {
     public AdCheckHour() {
         initComponents();
     }
-
+String cur_id ;
+    public AdCheckHour(String id) {
+        initComponents();
+        String [] column = {"ลำดับ","ปีการศึกษา","ประเภท","วันที่","จำนวนชั่วโมง"};
+        DefaultTableModel md = new DefaultTableModel(column,0);
+        tbHour.getTableHeader().setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); 
+        tbHour.setModel(md);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -25,121 +34,183 @@ public class AdCheckHour extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbHour = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        txtIDCheck = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btnSave = new javax.swing.JButton();
         txtID = new javax.swing.JTextField();
-        txtName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtActivities = new javax.swing.JTextField();
         txtHour = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        btnSave = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        txtDate = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtLastname = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        jLabel1.setText("รหัสนักศึกษา");
+        jTabbedPane1.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        jLabel2.setText("ชื่อ - สกุล");
+        jPanel1.setMinimumSize(new java.awt.Dimension(590, 380));
+        jPanel1.setPreferredSize(new java.awt.Dimension(590, 380));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtID.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        tbHour.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
+        tbHour.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tbHour);
 
-        txtName.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 550, 310));
 
-        jLabel3.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        jLabel3.setText("กิจกรรม");
+        jLabel5.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel5.setText("รหัสนักศึกษา");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
-        txtActivities.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtIDCheck.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtIDCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDCheckActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtIDCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 148, -1));
 
-        txtHour.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        txtHour.setText("จำนวนชั่วโมง");
+        btnSearch.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        btnSearch.setText("ค้นหา");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
-        jTextField2.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        btnEdit.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        btnEdit.setText("แก้ไข");
+        jPanel1.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
+
+        btnDelete.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        btnDelete.setText("ลบ");
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
+
+        jTabbedPane1.addTab("ตรวจสอบ", jPanel1);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSave.setFont(new java.awt.Font("TH Sarabun New", 0, 18)); // NOI18N
         btnSave.setText("บันทึก");
+        jPanel2.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, -1));
+
+        txtID.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jPanel2.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 148, -1));
+
+        jLabel3.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel3.setText("กิจกรรม");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 50, -1));
+
+        txtActivities.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jPanel2.add(txtActivities, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 202, -1));
+
+        txtHour.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtHour.setText("จำนวนชั่วโมง");
+        jPanel2.add(txtHour, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 80, -1));
+
+        jTextField2.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 100, -1));
 
         jLabel4.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
         jLabel4.setText("วันที่");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 37, -1));
 
-        txtDate.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        txtDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDateActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel1.setText("รหัสนักศึกษา");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 71, -1));
+
+        txtName.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        jPanel2.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 194, -1));
+
+        jLabel7.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        jLabel7.setText("ชื่อ");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 37, -1));
+
+        txtLastname.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        jPanel2.add(txtLastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 210, -1));
+
+        jLabel6.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        jLabel6.setText("นามสกุล");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
+        jLabel2.setText("* โปรดเพิ่มชั่วโมงทุนตามความเป็นจริง");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+
+        jTabbedPane1.addTab("เพิ่มชั่วโมงทุน", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtHour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(48, 48, 48)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(61, 61, 61)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtActivities, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 51, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSave)
-                .addGap(23, 23, 23))
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtActivities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtHour)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnSave)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
+    private void txtIDCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDCheckActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDateActionPerformed
+    }//GEN-LAST:event_txtIDCheckActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        DB db = new DB();
+        try {
+        String user_id = txtIDCheck.getText();
+        String sql = String.format("select user_id from users where user_id='%s''",user_id);
+        ResultSet rs = db.getResultSet(sql);
+        
+        String [] column = {"ลำดับ","ปีการศึกษา","ประเภท","วันที่","จำนวนชั่วโมง"};
+            sql = String.format("Select year,type_id,date,hour from schorlarship_hour where user_id = '%s'",user_id);
+            DefaultTableModel md = new DefaultTableModel(column,0);
+            rs = db.getResultSet(sql);
+            int i = 0;
+
+            while(rs.next()) {
+                i++;
+                String [] row = {String.valueOf(i),rs.getString(1),rs.getString(2),rs.getString(3),
+                rs.getString(4)};
+
+                md.addRow(row);
+            }
+            tbHour.getTableHeader().setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+            tbHour.setModel(md);
+        }
+        catch (Exception e) {
+            
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,16 +248,28 @@ public class AdCheckHour extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tbHour;
     private javax.swing.JTextField txtActivities;
-    private javax.swing.JTextField txtDate;
     private javax.swing.JLabel txtHour;
     private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtIDCheck;
+    private javax.swing.JTextField txtLastname;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }
