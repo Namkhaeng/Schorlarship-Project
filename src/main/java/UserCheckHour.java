@@ -5,6 +5,8 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 /**
  *
  * @author niebz
@@ -58,6 +60,20 @@ String cur_id ;
         catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
+        
+        //Logout
+        jTabbedPane1.addChangeListener( new ChangeListener() {
+
+            @Override
+            public void stateChanged (ChangeEvent e) {
+                if (jTabbedPane1.getSelectedIndex()==2) {
+                    dispose();
+                    LoginPage lp = new LoginPage();
+                    lp.setVisible(true);
+                }
+            }
+        });
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,18 +106,22 @@ String cur_id ;
         tbHour = new javax.swing.JTable();
         txtTotalHour = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPane1.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
 
         txtMajor.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtMajor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtMajor.setFocusable(false);
 
         txtYear.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtYear.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtYear.setFocusable(false);
 
         txtID.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtID.setFocusable(false);
 
         jLabel6.setFont(new java.awt.Font("TH SarabunPSK", 1, 24)); // NOI18N
@@ -111,6 +131,7 @@ String cur_id ;
         jLabel1.setText("ชื่อ - สกุล");
 
         txtName.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        txtName.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtName.setFocusable(false);
 
         jLabel2.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
@@ -129,9 +150,11 @@ String cur_id ;
         jLabel9.setText("เบอร์ติดต่อ");
 
         txtTel.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtTel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtTel.setFocusable(false);
 
         txtDepart.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtDepart.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtDepart.setFocusable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -149,8 +172,8 @@ String cur_id ;
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -249,6 +272,19 @@ String cur_id ;
 
         jTabbedPane1.addTab("ตรวจสอบ", jPanel1);
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 401, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("ออกจากระบบ", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -318,6 +354,7 @@ String cur_id ;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tbHour;

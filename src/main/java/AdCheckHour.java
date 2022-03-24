@@ -3,7 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.InputMethodListener;
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -17,6 +26,7 @@ public class AdCheckHour extends javax.swing.JFrame {
     public AdCheckHour() {
         initComponents();
     }
+    
 String cur_id ;
     public AdCheckHour(String id) {
         initComponents();
@@ -24,6 +34,54 @@ String cur_id ;
         DefaultTableModel md = new DefaultTableModel(column,0);
         tbHour.getTableHeader().setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); 
         tbHour.setModel(md);
+        
+        //Logout
+        jTabbedPane1.addChangeListener( new ChangeListener() {
+            @Override
+            public void stateChanged (ChangeEvent e) {
+                if (jTabbedPane1.getSelectedIndex()==2) {
+                    dispose();
+                    LoginPage lp = new LoginPage();
+                    lp.setVisible(true);
+                }
+            }
+        });
+
+
+        //เช็คการเปลี่ยนแปลง ถ้ามีการเพิ่มข้อมูลจะเรียกใช้ Method 
+        txtID.getDocument().addDocumentListener( new DocumentListener() {
+            @Override
+            public void insertUpdate (DocumentEvent e) {
+                setname();
+            }
+
+            @Override
+            public void removeUpdate (DocumentEvent e) {
+
+            }
+
+            @Override
+            public void changedUpdate (DocumentEvent e) {
+                setname();
+            }
+        } );
+
+    }
+
+    private void setname () {
+        String user_id = txtID.getText();
+        String sql = String.format("Select user_name,user_lastname from users where user_id = '%s'",user_id);
+        DB db = new DB();
+        try {
+            ResultSet rs = db.getResultSet(sql);
+            if (rs.next()) {
+                txtName.setText(rs.getString(1));
+                txtLastname.setText(rs.getString(2));
+            }
+        }
+        catch (Exception ex) {
+
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,9 +105,7 @@ String cur_id ;
         btnSave = new javax.swing.JButton();
         txtID = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtActivities = new javax.swing.JTextField();
-        txtHour = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtHour = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
@@ -57,10 +113,20 @@ String cur_id ;
         txtLastname = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        cbxType = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        txtYear = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPane1.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
         jPanel1.setMinimumSize(new java.awt.Dimension(590, 380));
         jPanel1.setPreferredSize(new java.awt.Dimension(590, 380));
@@ -105,10 +171,20 @@ String cur_id ;
 
         btnEdit.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         btnEdit.setText("แก้ไข");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
 
         btnDelete.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         btnDelete.setText("ลบ");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
 
         jTabbedPane1.addTab("ตรวจสอบ", jPanel1);
@@ -117,52 +193,100 @@ String cur_id ;
 
         btnSave.setFont(new java.awt.Font("TH Sarabun New", 0, 18)); // NOI18N
         btnSave.setText("บันทึก");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, -1));
 
         txtID.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        jPanel2.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 148, -1));
+        txtID.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIDFocusLost(evt);
+            }
+        });
+        txtID.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtIDInputMethodTextChanged(evt);
+            }
+        });
+        jPanel2.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 148, -1));
 
         jLabel3.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        jLabel3.setText("กิจกรรม");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 50, -1));
-
-        txtActivities.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        jPanel2.add(txtActivities, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 202, -1));
+        jLabel3.setText("จำนวนชั่วโมง");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 80, -1));
 
         txtHour.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        txtHour.setText("จำนวนชั่วโมง");
-        jPanel2.add(txtHour, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 80, -1));
-
-        jTextField2.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 100, -1));
+        jPanel2.add(txtHour, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 100, -1));
 
         jLabel4.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
         jLabel4.setText("วันที่");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 37, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 37, -1));
 
         jLabel1.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
         jLabel1.setText("รหัสนักศึกษา");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 71, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 71, -1));
 
         txtName.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
-        jPanel2.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 194, -1));
+        txtName.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtName.setFocusable(false);
+        jPanel2.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 194, -1));
 
         jLabel7.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel7.setText("ชื่อ");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 37, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 37, -1));
 
         txtLastname.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
-        jPanel2.add(txtLastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 210, -1));
+        txtLastname.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtLastname.setFocusable(false);
+        jPanel2.add(txtLastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 210, -1));
 
         jLabel6.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel6.setText("นามสกุล");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
         jLabel2.setText("* โปรดเพิ่มชั่วโมงทุนตามความเป็นจริง");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel8.setText("ประเภทกิจกรรม");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 100, -1));
+
+        cbxType.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        cbxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "กรุณาเลือก", "ชั่วโมงส่วนกลาง", "ชั่วโมงคณะ", "ชั่วโมงนักศึกษาทุน" }));
+        jPanel2.add(cbxType, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 120, -1));
+
+        jLabel9.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        jLabel9.setText("ปีการศึกษา");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+
+        txtYear.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        jPanel2.add(txtYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 90, -1));
+
         jTabbedPane1.addTab("เพิ่มชั่วโมงทุน", jPanel2);
+
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 401, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("ออกจากระบบ", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,8 +307,14 @@ String cur_id ;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDCheckActionPerformed
 
+  
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        search();
+    }//GEN-LAST:event_btnSearchActionPerformed
+  static ArrayList<Integer> keepid = new ArrayList<Integer>();
+    protected static void search() {
+        keepid.clear();
         DB db = new DB();
         try {
         String user_id = txtIDCheck.getText();
@@ -192,7 +322,7 @@ String cur_id ;
         ResultSet rs = db.getResultSet(sql);
         
         String [] column = {"ลำดับ","ปีการศึกษา","ประเภท","วันที่","จำนวนชั่วโมง"};
-            sql = String.format("Select year,type_id,date,hour from schorlarship_hour where user_id = '%s'",user_id);
+            sql = String.format("Select year,sht.type_name,date,hour,hour_id from schorlarship_hour as sh  inner join schorlarship_type as sht on sh.type_id = sht.type_id  where user_id = '%s'",user_id);
             DefaultTableModel md = new DefaultTableModel(column,0);
             rs = db.getResultSet(sql);
             int i = 0;
@@ -201,7 +331,7 @@ String cur_id ;
                 i++;
                 String [] row = {String.valueOf(i),rs.getString(1),rs.getString(2),rs.getString(3),
                 rs.getString(4)};
-
+                keepid.add(rs.getInt(5));
                 md.addRow(row);
             }
             tbHour.getTableHeader().setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
@@ -210,7 +340,89 @@ String cur_id ;
         catch (Exception e) {
             
         }
-    }//GEN-LAST:event_btnSearchActionPerformed
+    }
+    
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        String user_id = txtID.getText();
+        String type_name = cbxType.getSelectedItem().toString();
+        int hour = Integer.parseInt(txtHour.getText());
+        int year = Integer.parseInt(txtYear.getText());
+        
+        String sql = String.format("Insert into schorlarship_hour(user_id,type_id,hour,year) values('%s',(Select type_id from schorlarship_type where type_name = '%s'),'%d','%d')",user_id,type_name,hour,year);
+       // JOptionPane.showMessageDialog(null, sql);
+        DB temp = new DB();
+        try {
+            if (temp.execute(sql)) {
+                txtID.setText("");
+                txtName.setText("");
+                txtLastname.setText("");
+                txtYear.setText("");
+                txtHour.setText("");
+                cbxType.setSelectedIndex(0);
+            }else JOptionPane.showMessageDialog(null, "Add Fail!");
+        }
+        catch (Exception e) {
+            
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void txtIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIDFocusLost
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtIDFocusLost
+
+    private void txtIDInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtIDInputMethodTextChanged
+        // TODO add your handling code here:
+        String user_id = txtID.getText();
+        String sql = String.format("Select user_name,user_lastname from users where user_id = '%s'",user_id);
+        DB db = new DB();
+        try {
+            ResultSet rs = db.getResultSet(sql);
+            if (rs.next()) {
+                txtName.setText(rs.getString(1));
+                txtLastname.setText(rs.getString(2));
+            }
+        }
+        catch (Exception e) {
+            
+        }
+    }//GEN-LAST:event_txtIDInputMethodTextChanged
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+       delete ();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void delete (){
+         String sql = String.format("Delete from schorlarship_hour where hour_id = '%d'",keepid.get(tbHour.getSelectedRow()));
+        keepid.remove(tbHour.getSelectedRow());
+        DB temp = new DB();
+        //JOptionPane.showMessageDialog(null, sql);
+        try {
+            if (temp.execute(sql)) {
+                JOptionPane.showMessageDialog(null, "Delete sucess!");
+            }else JOptionPane.showMessageDialog(null, "Add Fail!");
+        }
+        catch (Exception e) {
+            
+        }
+        search();
+    }
+    
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        EditPage ep = new EditPage(this,true, txtIDCheck.getText(),keepid.get(tbHour.getSelectedRow()));
+        ep.setVisible(true);
+    }//GEN-LAST:event_btnEditActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,6 +464,7 @@ String cur_id ;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox<String> cbxType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -259,17 +472,19 @@ String cur_id ;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTable tbHour;
-    private javax.swing.JTextField txtActivities;
-    private javax.swing.JLabel txtHour;
+    private static javax.swing.JTable tbHour;
+    private javax.swing.JTextField txtHour;
     private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtIDCheck;
+    private static javax.swing.JTextField txtIDCheck;
     private javax.swing.JTextField txtLastname;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables
 }
