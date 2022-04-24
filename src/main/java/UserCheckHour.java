@@ -5,6 +5,7 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 /**
@@ -30,11 +31,11 @@ String cur_id ;
             if (rs.next()) {
                 txtName.setText(rs.getString(1)+" "+rs.getString(2));
                 txtID.setText(rs.getString(3));
+                txtIDCheck.setText(rs.getString(3));
                 txtDepart.setText(rs.getString(4));
                 txtMajor.setText(rs.getString(5));
                 txtYear.setText(rs.getString(6));
                 txtTel.setText(rs.getString(7));
-                txtIDCheck.setText(rs.getString(3));
             }
 
             sql = String.format("Select sum(hour) from schorlarship_hour where user_id = '%s' ",cur_id);
@@ -73,7 +74,36 @@ String cur_id ;
                 }
             }
         });
+        search();
+    }
+    
+    ArrayList<Integer> keepid = new ArrayList<Integer>();
+    protected void search() {
+        keepid.clear();
+        DB db = new DB();
+        try {
+        String sql = String.format("select user_id from users where user_id='%s''",cur_id);
+        ResultSet rs = db.getResultSet(sql);
         
+        String [] column = {"ลำดับ","ปีการศึกษา","ประเภท","วันที่","จำนวนชั่วโมง"};
+            sql = String.format("Select year,sht.type_name,date,hour,hour_id from schorlarship_hour as sh  inner join schorlarship_type as sht on sh.type_id = sht.type_id  where user_id = '%s'",cur_id);
+            DefaultTableModel md = new DefaultTableModel(column,0);
+            rs = db.getResultSet(sql);
+            int i = 0;
+
+            while(rs.next()) {
+                i++;
+                String [] row = {String.valueOf(i),rs.getString(1),rs.getString(2),rs.getString(3),
+                rs.getString(4)};
+                keepid.add(rs.getInt(5));
+                md.addRow(row);
+            }
+            tbHour.getTableHeader().setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+            tbHour.setModel(md);
+        }
+        catch (Exception e) {
+            
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -193,9 +223,9 @@ String cur_id ;
                                     .addComponent(txtTel)
                                     .addComponent(txtMajor, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(253, 253, 253)
+                        .addGap(269, 269, 269)
                         .addComponent(jLabel6)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

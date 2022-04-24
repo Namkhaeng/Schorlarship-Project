@@ -239,6 +239,9 @@ public class RegisterPage extends javax.swing.JFrame {
         String user_name = txtName.getText();
         String user_lastname = txtLastname.getText();
         String user_id = txtID.getText();
+        if(user_id.length()!=7) {
+            JOptionPane.showMessageDialog(null,"Please input your ID");
+        }
         String user_depart = cbxDepart.getSelectedItem().toString();
         String user_major = cbxMajor.getSelectedItem().toString();
         String user_year = cbxYear.getSelectedItem().toString();
