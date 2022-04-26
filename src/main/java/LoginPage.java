@@ -4,6 +4,7 @@
  */
 
 import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Font;
 import java.sql.*;
 import javax.swing.*;
 /**
@@ -41,17 +42,17 @@ public class LoginPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         jLabel1.setText("รหัสนักศึกษา");
 
-        jLabel2.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         jLabel2.setText("รหัสผ่าน");
 
-        txtUserID.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtUserID.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        txtPass.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtPass.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        btnRegis.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
+        btnRegis.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         btnRegis.setText("สมัคร");
         btnRegis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,7 +60,7 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
 
-        btnLogin.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
+        btnLogin.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         btnLogin.setText("เข้าสู่ระบบ");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,8 +68,8 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("TH SarabunPSK", 1, 24)); // NOI18N
-        jLabel3.setText("โปรแกรมคำนวณชั่วโมงทุน");
+        jLabel3.setFont(new java.awt.Font("FC Lamoon", 1, 30)); // NOI18N
+        jLabel3.setText("ระบบ ชั่วโมงทุนการศึกษา");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,42 +78,40 @@ public class LoginPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(btnLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
                 .addComponent(btnRegis)
                 .addGap(14, 14, 14))
             .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(61, 61, 61)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel1)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPass)
-                            .addComponent(txtUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jLabel3)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtPass)
+                    .addComponent(txtUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(76, 76, 76))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtUserID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtUserID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
                     .addComponent(btnRegis))
@@ -152,7 +151,7 @@ public class LoginPage extends javax.swing.JFrame {
             else throw new Exception("Fail");
         }
         catch(Exception e) {
-            JOptionPane.showMessageDialog(null, "Wrong ID or Password");
+            JOptionPane.showMessageDialog(null, "ไอดี หรือ รหัสผ่านไม่ถูกต้อง");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -170,6 +169,7 @@ public class LoginPage extends javax.swing.JFrame {
          */
         FlatLightLaf.setup();
         //</editor-fold>
+        UIManager.put("OptionPane.messageFont", new Font("FC Lamoon", 1, 14));
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -15,6 +15,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author niebz
@@ -27,20 +28,21 @@ public class AdCheckHour extends javax.swing.JFrame {
     public AdCheckHour() {
         initComponents();
     }
-    
-String cur_id ;
+
+    String cur_id;
+
     public AdCheckHour(String id) {
         initComponents();
-        String [] column = {"ลำดับ","ปีการศึกษา","ประเภท","วันที่","จำนวนชั่วโมง"};
-        DefaultTableModel md = new DefaultTableModel(column,0);
-        tbHour.getTableHeader().setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); 
+        String[] column = {"ลำดับ", "ปีการศึกษา", "ประเภท", "วันที่", "จำนวนชั่วโมง"};
+        DefaultTableModel md = new DefaultTableModel(column, 0);
+        tbHour.getTableHeader().setFont(new java.awt.Font("FC Lamoon", 0, 20));
         tbHour.setModel(md);
-        
+
         //Logout
-        jTabbedPane1.addChangeListener( new ChangeListener() {
+        jTabbedPane1.addChangeListener(new ChangeListener() {
             @Override
-            public void stateChanged (ChangeEvent e) {
-                if (jTabbedPane1.getSelectedIndex()==2) {
+            public void stateChanged(ChangeEvent e) {
+                if (jTabbedPane1.getSelectedIndex() == 2) {
                     dispose();
                     LoginPage lp = new LoginPage();
                     lp.setVisible(true);
@@ -48,30 +50,29 @@ String cur_id ;
             }
         });
 
-
         //เช็คการเปลี่ยนแปลง ถ้ามีการเพิ่มข้อมูลจะเรียกใช้ Method 
-        txtID.getDocument().addDocumentListener( new DocumentListener() {
+        txtID.getDocument().addDocumentListener(new DocumentListener() {
             @Override
-            public void insertUpdate (DocumentEvent e) {
+            public void insertUpdate(DocumentEvent e) {
                 setname();
             }
 
             @Override
-            public void removeUpdate (DocumentEvent e) {
+            public void removeUpdate(DocumentEvent e) {
 
             }
 
             @Override
-            public void changedUpdate (DocumentEvent e) {
+            public void changedUpdate(DocumentEvent e) {
                 setname();
             }
-        } );
+        });
 
     }
 
-    private void setname () {
+    private void setname() {
         String user_id = txtID.getText();
-        String sql = String.format("Select user_name,user_lastname from users where user_id = '%s'",user_id);
+        String sql = String.format("Select user_name,user_lastname from users where user_id = '%s'", user_id);
         DB db = new DB();
         try {
             ResultSet rs = db.getResultSet(sql);
@@ -79,11 +80,11 @@ String cur_id ;
                 txtName.setText(rs.getString(1));
                 txtLastname.setText(rs.getString(2));
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,7 +124,7 @@ String cur_id ;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("FC Lamoon", 0, 18)); // NOI18N
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabbedPane1MouseClicked(evt);
@@ -133,7 +134,6 @@ String cur_id ;
         jPanel1.setMinimumSize(new java.awt.Dimension(590, 380));
         jPanel1.setPreferredSize(new java.awt.Dimension(590, 380));
 
-        tbHour.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
         tbHour.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -145,36 +145,37 @@ String cur_id ;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbHour.setFont(new java.awt.Font("FC Lamoon", 0, 18)); // NOI18N
         jScrollPane1.setViewportView(tbHour);
 
-        jLabel5.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
         jLabel5.setText("รหัสนักศึกษา");
+        jLabel5.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        txtIDCheck.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtIDCheck.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         txtIDCheck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDCheckActionPerformed(evt);
             }
         });
 
-        btnSearch.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         btnSearch.setText("ค้นหา");
+        btnSearch.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);
             }
         });
 
-        btnEdit.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         btnEdit.setText("แก้ไข");
+        btnEdit.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
             }
         });
 
-        btnDelete.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         btnDelete.setText("ลบ");
+        btnDelete.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -186,47 +187,49 @@ String cur_id ;
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel5)
-                .addGap(40, 40, 40)
-                .addComponent(txtIDCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnSearch)
-                .addGap(18, 18, 18)
-                .addComponent(btnEdit)
-                .addGap(18, 18, 18)
-                .addComponent(btnDelete))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtIDCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(btnSearch)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEdit)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(6, 6, 6)
                         .addComponent(jLabel5))
                     .addComponent(txtIDCheck, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch)
                     .addComponent(btnEdit)
                     .addComponent(btnDelete))
                 .addGap(13, 13, 13)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("ตรวจสอบ", jPanel1);
 
-        btnSave.setFont(new java.awt.Font("TH Sarabun New", 0, 18)); // NOI18N
         btnSave.setText("บันทึก");
+        btnSave.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
             }
         });
 
-        txtID.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtID.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         txtID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtIDFocusLost(evt);
@@ -240,97 +243,96 @@ String cur_id ;
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
         jLabel3.setText("จำนวนชั่วโมง");
+        jLabel3.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        txtHour.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
+        txtHour.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
         jLabel4.setText("วันที่");
+        jLabel4.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
         jLabel1.setText("รหัสนักศึกษา");
+        jLabel1.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        txtName.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        txtName.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         txtName.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtName.setFocusable(false);
 
-        jLabel7.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel7.setText("ชื่อ");
+        jLabel7.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        txtLastname.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        txtLastname.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
         txtLastname.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtLastname.setFocusable(false);
 
-        jLabel6.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel6.setText("นามสกุล");
+        jLabel6.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("TH SarabunPSK", 0, 18)); // NOI18N
         jLabel2.setText("* โปรดเพิ่มชั่วโมงทุนตามความเป็นจริง");
+        jLabel2.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("TH Sarabun New", 0, 20)); // NOI18N
         jLabel8.setText("ประเภทกิจกรรม");
+        jLabel8.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        cbxType.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         cbxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "กรุณาเลือก", "ชั่วโมงส่วนกลาง", "ชั่วโมงคณะ", "ชั่วโมงนักศึกษาทุน" }));
+        cbxType.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
         jLabel9.setText("ปีการศึกษา");
+        jLabel9.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
-        txtYear.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
-
-        jDate.setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+        txtYear.setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel6)
-                        .addGap(14, 14, 14)
-                        .addComponent(txtLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel9)
-                        .addGap(40, 40, 40)
-                        .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(cbxType, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(txtHour, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(550, 550, 550)
-                        .addComponent(btnSave)))
-                .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(cbxType, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(txtHour, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(3, 3, 3)
+                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jLabel6))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(56, 56, 56)
+                                        .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(74, 74, 74)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnSave)
+                        .addGap(14, 14, 14))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,24 +346,23 @@ String cur_id ;
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(txtLastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel4)
-                                .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(33, 33, 33)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(cbxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(txtHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(btnSave))
+                .addGap(50, 50, 50)
+                .addComponent(btnSave)
+                .addGap(14, 14, 14))
         );
 
         jTabbedPane1.addTab("เพิ่มชั่วโมงทุน", jPanel2);
@@ -376,11 +377,11 @@ String cur_id ;
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 401, Short.MAX_VALUE)
+            .addGap(0, 380, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("ออกจากระบบ", jPanel3);
@@ -404,41 +405,56 @@ String cur_id ;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDCheckActionPerformed
 
-  
+
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        search();
+        String user_id = txtID.getText();
+        String id = txtIDCheck.getText();
+        String sql2 = String.format("Select user_id from users where user_id = '%s' ", user_id);
+        CheckNum cn = new CheckNum();
+        DB db = new DB();
+        try {
+            ResultSet rs = db.getResultSet(sql2);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "ไม่พบผู้ใช้!!");
+            } else if (cn.Num(id)) {
+                search();
+            }
+
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_btnSearchActionPerformed
-  
+
     static ArrayList<Integer> keepid = new ArrayList<Integer>();
+
     protected static void search() {
         keepid.clear();
         DB db = new DB();
         try {
-        String user_id = txtIDCheck.getText();
-        String sql = String.format("select user_id from users where user_id='%s''",user_id);
-        ResultSet rs = db.getResultSet(sql);
-        
-        String [] column = {"ลำดับ","ปีการศึกษา","ประเภท","วันที่","จำนวนชั่วโมง"};
-            sql = String.format("Select year,sht.type_name,date,hour,hour_id from schorlarship_hour as sh  inner join schorlarship_type as sht on sh.type_id = sht.type_id  where user_id = '%s'",user_id);
-            DefaultTableModel md = new DefaultTableModel(column,0);
+            String user_id = txtIDCheck.getText();
+            String sql = String.format("select user_id from users where user_id='%s''", user_id);
+            ResultSet rs = db.getResultSet(sql);
+
+            String[] column = {"ลำดับ", "ปีการศึกษา", "ประเภท", "วันที่", "จำนวนชั่วโมง"};
+            sql = String.format("Select year,sht.type_name,date,hour,hour_id from schorlarship_hour as sh  inner join schorlarship_type as sht on sh.type_id = sht.type_id  where user_id = '%s'", user_id);
+            DefaultTableModel md = new DefaultTableModel(column, 0);
             rs = db.getResultSet(sql);
             int i = 0;
-            while(rs.next()) {
+            while (rs.next()) {
                 i++;
-                String [] row = {String.valueOf(i),rs.getString(1),rs.getString(2),rs.getString(3),
-                rs.getString(4)};
+                String[] row = {String.valueOf(i), rs.getString(1), rs.getString(2), rs.getString(3),
+                    rs.getString(4)};
                 keepid.add(rs.getInt(5));
                 md.addRow(row);
             }
-            tbHour.getTableHeader().setFont(new java.awt.Font("TH SarabunPSK", 0, 20)); // NOI18N
+            tbHour.getTableHeader().setFont(new java.awt.Font("FC Lamoon", 0, 20)); // NOI18N
             tbHour.setModel(md);
-        }
-        catch (Exception e) {
-            
+        } catch (Exception e) {
+
         }
     }
-    
+
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane1MouseClicked
@@ -451,37 +467,42 @@ String cur_id ;
         // TODO add your handling code here:
         String user_id = txtID.getText();
         String type_name = cbxType.getSelectedItem().toString();
-        String datepick = jDate.getDate()+"";
+        String datepick = jDate.getDate() + "";
         int hour = Integer.parseInt(txtHour.getText());
         int year = Integer.parseInt(txtYear.getText());
-        
-        String sql = String.format("Insert into schorlarship_hour(user_id,type_id,hour,date,year) values('%s',(Select type_id from schorlarship_type where type_name = '%s'),'%d','%s','%d')",user_id,type_name,hour,datepick,year);
+
+        String sql = String.format("Insert into schorlarship_hour(user_id,type_id,hour,date,year) values('%s',(Select type_id from schorlarship_type where type_name = '%s'),'%d','%s','%d')", user_id, type_name, hour, datepick, year);
         //System.out.println(sql);
         DB temp = new DB();
         try {
-            if (temp.execute(sql)) {
-                txtID.setText("");
-                txtName.setText("");
-                txtLastname.setText("");
-                txtYear.setText("");
-                txtHour.setText("");
-                cbxType.setSelectedIndex(0);
-            }else JOptionPane.showMessageDialog(null, "Add Fail!");
-        }
-        catch (Exception e) {
-            
+            if (hour <= 8) {
+                if (temp.execute(sql)) {
+                    txtID.setText("");
+                    txtName.setText("");
+                    txtLastname.setText("");
+                    txtYear.setText("");
+                    txtHour.setText("");
+                    cbxType.setSelectedIndex(0);
+                } else {
+                    JOptionPane.showMessageDialog(null, "ไม่สามารถเพิ่มข้อมูลได้!!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "ไม่สามารถเพิ่มชั่วโมงได้มากกว่า 8 ชั่วโมง!!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "กรุณาใส่ข้อมูล!!");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIDFocusLost
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtIDFocusLost
 
     private void txtIDInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtIDInputMethodTextChanged
         // TODO add your handling code here:
         String user_id = txtID.getText();
-        String sql = String.format("Select user_name,user_lastname from users where user_id = '%s'",user_id);
+        String sql = String.format("Select user_name,user_lastname from users where user_id = '%s'", user_id);
         DB db = new DB();
         try {
             ResultSet rs = db.getResultSet(sql);
@@ -489,51 +510,49 @@ String cur_id ;
                 txtName.setText(rs.getString(1));
                 txtLastname.setText(rs.getString(2));
             }
-        }
-        catch (Exception e) {
-            
+        } catch (Exception e) {
+
         }
     }//GEN-LAST:event_txtIDInputMethodTextChanged
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-       delete ();
+        delete();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void delete (){
-         String sql = String.format("Delete from schorlarship_hour where hour_id = '%d'",keepid.get(tbHour.getSelectedRow()));
+    private void delete() {
+        String sql = String.format("Delete from schorlarship_hour where hour_id = '%d'", keepid.get(tbHour.getSelectedRow()));
         keepid.remove(tbHour.getSelectedRow());
         DB temp = new DB();
         //JOptionPane.showMessageDialog(null, sql);
         try {
             if (temp.execute(sql)) {
                 JOptionPane.showMessageDialog(null, "Delete sucess!");
-            }else JOptionPane.showMessageDialog(null, "Add Fail!");
-        }
-        catch (Exception e) {
-            
+            } else {
+                JOptionPane.showMessageDialog(null, "Add Fail!");
+            }
+        } catch (Exception e) {
+
         }
         search();
     }
-    
+
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        EditPage ep = new EditPage(this,true, txtIDCheck.getText(),keepid.get(tbHour.getSelectedRow()));
+        EditPage ep = new EditPage(this, true, txtIDCheck.getText(), keepid.get(tbHour.getSelectedRow()));
         ep.setVisible(true);
     }//GEN-LAST:event_btnEditActionPerformed
 
-    public boolean isNumeric(String numeric){
+    public boolean isNumeric(String numeric) {
         try {
             int num1 = Integer.parseInt(numeric);
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please use Numeric");
             return false;
         }
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
